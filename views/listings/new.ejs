@@ -1,0 +1,118 @@
+<% layout('./layouts/boilerplate') -%>
+<h3 style="margin-top: 5px">Create a new Listings</h3>
+<div class="row">
+  <div class="col-8 offset-2">
+    <form
+      action="/listings"
+      method="post"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Enter Title</label>
+        <input
+          type="text"
+          placeholder="enter the title"
+          name="listing[title]"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Good go ahead</div>
+      </div>
+
+      <br /><br />
+      <div class="mb-3">
+        <label for="description" class="form-label">Enter Description</label>
+        <textarea
+          name="listing[description]"
+          placeholder="enter the description"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Please enter a valid desciption.</div>
+      </div>
+      <br /><br />
+
+      <div class="row mb-3">
+        <div class="col-md-4 mb-3">
+          <label for="price" class="form-label">Enter Price</label>
+          <input
+            placeholder="1200"
+            name="listing[price]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid price.</div>
+        </div>
+        <div class="col-md-4 mb-3">
+          <label for="country" class="form-label">Enter Country</label>
+          <input
+            type="text"
+            placeholder="India"
+            name="listing[country]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Please enter a valid country name.</div>
+        </div>
+      </div>
+
+      <br /><br />
+
+      <div class="mb-3">
+        <label for="url" class="form-label">Upload Listing Image</label>
+        <input
+          type="file"
+          name="listing[image][url]"
+          class="form-control"
+          required
+        />
+      </div>
+      <br /><br />
+
+      <div class="mb-3">
+        <div class="mb-3">
+          <label class="form-label">Location Name</label>
+          <input
+            type="text"
+            name="listing[location]"
+            class="form-control"
+            placeholder="Enter city name"
+            required
+          />
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <label class="form-label">Latitude</label>
+            <input
+              type="number"
+              step="any"
+              name="listing[latitude]"
+              class="form-control"
+              placeholder="Enter latitude"
+              required
+            />
+          </div>
+
+          <div class="col">
+            <label class="form-label">Longitude</label>
+            <input
+              type="number"
+              step="any"
+              name="listing[longitude]"
+              class="form-control"
+              placeholder="Enter longitude"
+              required
+            />
+          </div>
+        </div>
+        <div class="invalid-feedback">Please enter a valid location.</div>
+      </div>
+      <br /><br />
+
+      <button class="btn btn-dark add-btn">Add</button>
+    </form>
+  </div>
+</div>
