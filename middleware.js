@@ -24,7 +24,12 @@ module.exports.saveRedirectUrl = (req,res,next)=>{
 module.exports.isOwner = async(req,res,next)=>{
     let {id} = req.params;
     let listing = await Listing.findById(id);
-    if(!listing.owner._id.equals(res.locals.currUser._id)){
+    if(!listing){
+        req.flash('error','Listing does not exist!');
+        return res.redirect('/listings');
+    }
+    const ownerId = listing.owner && listing.owner._id ? listing.owner._id : listing.owner;
+    if(!ownerId || ownerId.toString() !== res.locals.currUser._id.toString()){
         req.flash('error','Only owner can edit or delete the Listings!');
         return res.redirect(`/listings/${id}`);
     }
@@ -34,7 +39,12 @@ module.exports.isOwner = async(req,res,next)=>{
 module.exports.isAuthor = async(req,res,next)=>{
     let {id, reviewId} = req.params;
     let review = await Review.findById(reviewId);
-    if(!review.author._id.equals(res.locals.currUser._id)){
+    if(!review){
+        req.flash('error','Review does not exist!');
+        return res.redirect(`/listings/${id}`);
+    }
+    const authorId = review.author && review.author._id ? review.author._id : review.author;
+    if(!authorId || authorId.toString() !== res.locals.currUser._id.toString()){
         req.flash('error','Only owner can edit or delete the review!');
         return res.redirect(`/listings/${id}`);
     }

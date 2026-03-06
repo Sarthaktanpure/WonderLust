@@ -1,6 +1,16 @@
 const Listing = require("../models/listing.js");
 const { listingSchema, reviewSchema } = require("../schema.js");
 
+module.exports.temp = async (req, res) => {
+    if (!req.user) {
+        return res.send("Please login first");
+    }
+
+    await Listing.updateMany({}, { owner: req.user._id });
+
+    res.send("All listings updated. You are now the owner.");
+};
+
 // Index Route call-back
 module.exports.index = async (req, res) => {
   let allListings = await Listing.find({});

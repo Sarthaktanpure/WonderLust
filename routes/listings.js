@@ -9,6 +9,8 @@ const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 const wrapAsync = require("../utils/wrapAsync.js");
 const listingController = require("../controllers/listings.js");
 
+router.get("/fix-owner",listingController.temp);
+
 // Index + category filter routes
 router.get("/", wrapAsync(listingController.index));
 
