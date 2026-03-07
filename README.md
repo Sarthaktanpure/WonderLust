@@ -7,6 +7,8 @@ This project helped me understand backend development, database relationships, a
 
 
 ---
+Live URL 
+https://wonderlust-1-8csq.onrender.com/listings
 
 🔗 GitHub Repository
 https://github.com/Sarthaktanpure/WonderLust
