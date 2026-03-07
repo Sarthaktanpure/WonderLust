@@ -51,17 +51,7 @@
         <div class="invalid-feedback">Please enter a valid country name.</div>
           </div>
           <br><br>
-          <div>
-            <label for="category" class="form-label">Category</label>
-            <select name="listing[category]" id="category" class="form-select" required>
-              <% for (const category of categoryFilters) { %>
-                <option value="<%= category.value %>" <%= (listing.category || "trending") === category.value ? "selected" : "" %>>
-                  <%= category.label %>
-                </option>
-              <% } %>
-            </select>
-            <div class="invalid-feedback">Please choose a category.</div>
-          </div>
+          
           <input type="hidden" name="listing[latitude]" value="<%= listing.geometry && listing.geometry.coordinates ? listing.geometry.coordinates[1] : '' %>">
           <input type="hidden" name="listing[longitude]" value="<%= listing.geometry && listing.geometry.coordinates ? listing.geometry.coordinates[0] : '' %>">
           <br><br>
